@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.my.ssm.mapper.EmployeeMapper">
+    <!--List<Employee> getAllEmployee();-->
+    <select id="getAllEmployee" resultType="Employee">
+        select * from t_emp
+    </select>
+
+    <!--Employee getEmployeeById(Integer id);-->
+    <select id="getEmployeeById" resultType="Employee">
+        select * from t_emp where emp_id=#{id}
+    </select>
+
+    <!--新增-->
+    <!--void addEmployee(Employee employee);-->
+    <insert id="addEmployee" useGeneratedKeys="true">
+        insert into t_emp values (null,#{empName},#{age},#{gender},#{email})
+    </insert>
+
+    <!--批量新增-->
+
+
+
+    <!--删除-->
+    <!--void deleteEmployee(Integer id);-->
+    <delete id="deleteEmployee">
+        delete from t_emp where emp_id=#{id}
+    </delete>
+
+    <!--更新-->
+    <!--void updateEmployee(Employee employee);-->
+    <update id="updateEmployee">
+        update t_emp set emp_name=#{empName},age=#{age},gender=#{gender},email=#{email} where emp_id=#{empId}
+    </update>
+</mapper>
